@@ -6,7 +6,7 @@ import 'package:money_management/screens/home/widgets/bottom_navigation.dart';
 import 'package:money_management/screens/transactions/screen_transactions.dart';
 
 class ScreenHome extends StatelessWidget {
-   ScreenHome({super.key});
+  ScreenHome({super.key});
 
   static ValueNotifier<int> selectedIndexNotifier = ValueNotifier(0);
 
@@ -45,14 +45,6 @@ class ScreenHome extends StatelessWidget {
             print('Add Category');
 
             showCategoryAddPopup(context);
-
-            // final _sample = CategoryModel(
-            //   id: DateTime.now().millisecondsSinceEpoch.toString(),
-            //   name: 'Travel',
-            //   type: CategoryType.expense,
-            // );
-
-            // CategoryDB().insrtCategory(_sample);
           }
         },
         child: const Icon(

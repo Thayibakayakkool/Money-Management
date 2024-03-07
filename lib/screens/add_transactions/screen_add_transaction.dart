@@ -4,7 +4,6 @@ import 'package:money_management/db/transactions/transaction_db.dart';
 import 'package:money_management/models/category/category_model.dart';
 import 'package:money_management/models/transactions/transactions_model.dart';
 
-
 class ScreenAddTransaction extends StatefulWidget {
   static const routeName = 'add_transaction';
 
@@ -30,13 +29,6 @@ class _ScreenAddTransactionState extends State<ScreenAddTransaction> {
     super.initState();
   }
 
-  /*
-  Purpose
-  Date
-  Amount
-  Income/Expense
-  CategoryType
-  */
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,31 +38,39 @@ class _ScreenAddTransactionState extends State<ScreenAddTransaction> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            //Purpose
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextFormField(
                 controller: _purposeTextEditingController,
                 keyboardType: TextInputType.text,
-                decoration: const InputDecoration(
+                decoration:  InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: 'Purpose',
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.pink.shade900,
+                    ),
+                  ),
                 ),
               ),
             ),
-            //Amount
+
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextFormField(
                 controller: _amountTextEditingController,
                 keyboardType: TextInputType.number,
-                decoration: const InputDecoration(
+                decoration:  InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: 'Amount',
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.pink.shade900,
+                    ),
+                  ),
                 ),
               ),
             ),
-            //Date
 
             TextButton.icon(
               onPressed: () async {
@@ -89,19 +89,19 @@ class _ScreenAddTransactionState extends State<ScreenAddTransaction> {
                   });
                 }
               },
-              icon: const Icon(Icons.calendar_today),
+              icon:Icon(Icons.calendar_today,color: Colors.pink[900],),
               label: Text(_selectedDate == null
                   ? 'Select Date'
-                  : _selectedDate!.toString()),
+                  : _selectedDate!.toString(),style: TextStyle(color: Colors.pink[900]),),
             ),
 
-            //income/expense
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Row(
                   children: [
                     Radio(
+                      activeColor: Colors.pink[900],
                       value: CategoryType.income,
                       groupValue: _selectedCategoryType,
                       onChanged: (newValue) {
@@ -117,6 +117,7 @@ class _ScreenAddTransactionState extends State<ScreenAddTransaction> {
                 Row(
                   children: [
                     Radio(
+                      activeColor: Colors.pink[900],
                       value: CategoryType.expense,
                       groupValue: _selectedCategoryType,
                       onChanged: (newValue) {
@@ -131,7 +132,7 @@ class _ScreenAddTransactionState extends State<ScreenAddTransaction> {
                 ),
               ],
             ),
-//Categorytype
+
             DropdownButton<String>(
               hint: const Text('Select Category'),
               value: _categoryID,
@@ -161,7 +162,7 @@ class _ScreenAddTransactionState extends State<ScreenAddTransaction> {
               onPressed: () {
                 addTransaction();
               },
-              child: Text('Submit'),
+              child: Text('Submit',style: TextStyle(color: Colors.pink[900]),),
             )
           ],
         ),
@@ -195,7 +196,7 @@ class _ScreenAddTransactionState extends State<ScreenAddTransaction> {
     }
     //_selectedDate
     //_selectedCategoryType
-  final _model=  TransactionModel(
+    final _model = TransactionModel(
       purpose: _purposeText,
       amount: _parsedAmount,
       date: _selectedDate!,

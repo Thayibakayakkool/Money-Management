@@ -1,6 +1,6 @@
-
 import 'package:hive/hive.dart';
 import 'package:money_management/models/category/category_model.dart';
+
 part 'transactions_model.g.dart';
 
 @HiveType(typeId: 3)
@@ -20,8 +20,8 @@ class TransactionModel {
   @HiveField(4)
   final CategoryModel category;
 
-@HiveField(5)
-String? id;
+  @HiveField(5)
+  String? id;
 
   TransactionModel({
     required this.purpose,
@@ -29,8 +29,7 @@ String? id;
     required this.date,
     required this.type,
     required this.category,
-  })
-  {
-id=DateTime.now().microsecondsSinceEpoch.toString();
+  }) {
+    id = DateTime.now().microsecondsSinceEpoch.toString();
   }
 }

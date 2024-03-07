@@ -1,13 +1,11 @@
-
 import 'package:hive_flutter/adapters.dart';
-part 'category_model.g.dart';
 
+part 'category_model.g.dart';
 
 @HiveType(typeId: 2)
 enum CategoryType {
   @HiveField(0)
   income,
-
   @HiveField(2)
   expense,
 }
@@ -35,6 +33,6 @@ class CategoryModel {
 
   @override
   String toString() {
-   return '{$name $type}';
+    return '{$name $type}';
   }
 }

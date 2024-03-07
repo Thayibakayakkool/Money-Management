@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:intl/intl.dart';
@@ -24,16 +22,19 @@ class ScreenTransactions extends StatelessWidget {
               itemBuilder: (ctx, index) {
                 final _value = newList[index];
                 return Slidable(
-                   key: Key(_value.id!),
-                   startActionPane: ActionPane(motion:const ScrollMotion(), children:[
-                    SlidableAction(onPressed: (ctx){
-                      TransactionDB.instance.deleteTransaction(_value.id!);
-                    },
-                    icon: Icons.delete,
-                    label: 'Delete',
-                    )
-                   ],
-                   ),
+                  key: Key(_value.id!),
+                  startActionPane: ActionPane(
+                    motion: const ScrollMotion(),
+                    children: [
+                      SlidableAction(
+                        onPressed: (ctx) {
+                          TransactionDB.instance.deleteTransaction(_value.id!);
+                        },
+                        icon: Icons.delete,
+                        label: 'Delete',
+                      )
+                    ],
+                  ),
                   child: Card(
                     elevation: 0,
                     child: ListTile(
@@ -67,6 +68,5 @@ class ScreenTransactions extends StatelessWidget {
     final _date = DateFormat.MMMd().format(date);
     final _splitedDate = _date.split(' ');
     return '${_splitedDate.last}\n${_splitedDate.first}';
-    // return '${date.day}\n${date.month}';
   }
 }

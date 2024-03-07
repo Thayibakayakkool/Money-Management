@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:money_management/db/category/category_db.dart';
 import 'package:money_management/models/category/category_model.dart';
 
-
 ValueNotifier<CategoryType> selectedCategoryNotifier =
     ValueNotifier(CategoryType.income);
 
@@ -15,12 +14,17 @@ Future<void> showCategoryAddPopup(BuildContext context) async {
         title: const Text('Add Category'),
         children: [
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(8.0),
             child: TextFormField(
               controller: _nameEditingController,
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
                 border: OutlineInputBorder(),
                 hintText: 'Category Name',
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.pink.shade900,
+                  ),
+                ),
               ),
             ),
           ),
@@ -44,7 +48,7 @@ Future<void> showCategoryAddPopup(BuildContext context) async {
                   return;
                 }
                 final _type = selectedCategoryNotifier.value;
-               final _category= CategoryModel(
+                final _category = CategoryModel(
                   id: DateTime.now().millisecondsSinceEpoch.toString(),
                   name: _name,
                   type: _type,
@@ -79,6 +83,7 @@ class RadioButton extends StatelessWidget {
           valueListenable: selectedCategoryNotifier,
           builder: (BuildContext ctx, CategoryType newCategory, Widget? _) {
             return Radio<CategoryType>(
+              activeColor: Colors.pink[900],
               value: type,
               groupValue: newCategory,
               onChanged: (value) {

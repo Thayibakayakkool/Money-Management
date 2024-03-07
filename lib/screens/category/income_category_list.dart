@@ -6,14 +6,14 @@ import '../../db/category/category_db.dart';
 class IncomeCategoryList extends StatelessWidget {
   const IncomeCategoryList({super.key});
 
-   @override
+  @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
         valueListenable: CategoryDB().incomeCategoryListListener,
-        builder: (BuildContext ctx, List<CategoryModel> newList, Widget?_) {
+        builder: (BuildContext ctx, List<CategoryModel> newList, Widget? _) {
           return ListView.separated(
             itemBuilder: (ctx, index) {
-              final category=newList[index];
+              final category = newList[index];
               return Card(
                 child: ListTile(
                   title: Text(category.name),

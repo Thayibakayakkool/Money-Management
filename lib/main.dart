@@ -6,26 +6,24 @@ import 'package:money_management/models/transactions/transactions_model.dart';
 import 'package:money_management/screens/add_transactions/screen_add_transaction.dart';
 import 'package:money_management/screens/home/screen_home.dart';
 
-
-Future<void> main() async{
-final obj1=CategoryDB();
-final obj2=CategoryDB();
+Future<void> main() async {
+  final obj1 = CategoryDB();
+  final obj2 = CategoryDB();
 
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
-  
-  if(!Hive.isAdapterRegistered(CategoryTypeAdapter().typeId)){
+
+  if (!Hive.isAdapterRegistered(CategoryTypeAdapter().typeId)) {
     Hive.registerAdapter(CategoryTypeAdapter());
   }
 
-  if(!Hive.isAdapterRegistered(CategoryModelAdapter().typeId)){
+  if (!Hive.isAdapterRegistered(CategoryModelAdapter().typeId)) {
     Hive.registerAdapter(CategoryModelAdapter());
   }
 
-   if(!Hive.isAdapterRegistered(TransactionModelAdapter().typeId)){
+  if (!Hive.isAdapterRegistered(TransactionModelAdapter().typeId)) {
     Hive.registerAdapter(TransactionModelAdapter());
   }
-
 
   runApp(const MyApp());
 }
@@ -42,11 +40,10 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home:  ScreenHome(),
+      home: ScreenHome(),
       routes: {
-        ScreenAddTransaction.routeName:(ctx) => const ScreenAddTransaction(), 
+        ScreenAddTransaction.routeName: (ctx) => const ScreenAddTransaction(),
       },
     );
   }
 }
-
